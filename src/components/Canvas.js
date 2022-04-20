@@ -7,6 +7,7 @@ const Canvas = () => {
     const canvasRef = useRef(null);
     console.log(canvasRef)
 
+
     const clears = () => {
         canvasRef.current.clear()
     }
@@ -16,6 +17,7 @@ const Canvas = () => {
     }
     const sendImage = () => {
         setSendImg(canvasRef.current.getDataURL())
+        window.localStorage.setItem("img", sendImg)
     }
 
     return (

@@ -9,7 +9,8 @@ const Users = () => {
 
 
             <h2>Users</h2>
-            <h3>{firstPlayer}</h3>
+            <h3>First player-{firstPlayer}</h3>
+            <h3>Second Player-{secondPlayer}</h3>
 
 
         </section>

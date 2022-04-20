@@ -47,7 +47,7 @@ const Home = (props) => {
                 }}
                 />
 
-                <button className="home_button" onClick={setToStorage} > <Link to="/Game">Lest play</Link></button>
+                <button className="home_button" onClick={setToStorage} > <Link to={users.length == 0 ? "/Game" : "/SecondPlayerGame"}  >Lest play</Link></button>
 
             </form>
         </section>

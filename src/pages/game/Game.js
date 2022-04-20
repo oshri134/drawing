@@ -11,32 +11,71 @@ import { PLAYER_TWO } from "../../config/game.config"
 
 const Levels = (props) => {
     const [showWord, setShowWord] = useState()
+    const [level, setLevel] = useState(0)
+    const [scoreGame, setScoreGame] = useState(0)
     const [showGame, setShowGame] = useState(false)
     const [showWaiting, setShowWaiting] = useState(false)
     const firstPlayer = window.localStorage.getItem('first_player');
 
     useEffect(() => {
         const secondPlayer = window.localStorage.getItem(PLAYER_TWO)
-        // if (secondPlayer !== mull) {
+        if (secondPlayer !== null) {
+            setInterval(() => {
+                setShowGame(true)
+                setShowWaiting(false)
+            }, 5000)
 
-        // }
+        }
 
-    });
-    console.log()
+
+    }, []);
+
     const easy = () => {
         setShowWord(words.level_one[Math.floor(Math.random() * words.level_one.length)])
         setShowWaiting(true)
+        setLevel(1)
 
     }
     const medium = () => {
         setShowWord(words.level_two[Math.floor(Math.random() * words.level_one.length)])
         setShowWaiting(true)
+        setLevel(2)
     }
     const hard = () => {
         setShowWord(words.level_three[Math.floor(Math.random() * words.level_one.length)])
         setShowWaiting(true)
+        setLevel(3)
     }
-    console.log(words.level_one)
+    const nextWord = () => {
+        if (level === 1) {
+            setShowWord(words.level_one[Math.floor(Math.random() * words.level_one.length)])
+        }
+        if (level === 2) {
+            setShowWord(words.level_two[Math.floor(Math.random() * words.level_one.length)])
+        }
+
+        if (level === 3) {
+            setShowWord(words.level_three[Math.floor(Math.random() * words.level_one.length)])
+        }
+
+    }
+    const points = () => {
+
+
+        if (level === 1) {
+            const point = 1
+            setScoreGame(scoreGame + point)
+        }
+        if (level === 2) {
+            const point = 3
+            setScoreGame(scoreGame + point)
+        }
+        if (level === 3) {
+            const point = 5
+            setScoreGame(scoreGame + point)
+        }
+        window.localStorage.setItem("point", scoreGame)
+    }
     return (
         <section className="page_game">
             <h1>Welcome {firstPlayer}</h1>
@@ -77,14 +116,23 @@ const Levels = (props) => {
                 <div className="words">
                     <h1>Words</h1>
                     <h3> {showWord}</h3>
-
+                    <div className="button_word">
+                        <button onClick={nextWord}>Next word</button>
+                        <button onClick={points}>Good answer</button>
+                    </div>
+                    <h3>Point</h3>
+                    <div className="point">
+                        {scoreGame}
+                    </div>
                 </div>
+
                 <div className="canvas">
                     <Canvas />
                 </div>
                 <div className="users">
                     <Users />
                 </div>
+
             </div>)
 
             }
