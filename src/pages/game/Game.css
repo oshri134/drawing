@@ -1,0 +1,34 @@
+.page_game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.game .canvas{
+    margin-right: 20%;
+}
+.game .users{
+    margin-right: 30%;
+}
+.levels{
+    display: flex;
+}
+.levels >h3{
+    margin-left: 4vh;
+}
+.words{
+margin-right: -20vh;
+
+
+}
+.words h1{
+    border-bottom: solid;
+}
+.waiting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
